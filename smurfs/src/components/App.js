@@ -1,18 +1,53 @@
-import React, { Component } from "react";
+import React, {useState, useEffect} from "react";
 import "./App.css";
-import SmurfForm from "./SmurfForm"
-class App extends Component {
-  render() {
+import SmurfForm2 from "./SmurfForm2"
+//import {addSmurf} from "../reducers/addSmurf"
+import smurfContext from "./context/smurfContext"
+import Axios from "axios";
+import SmurfDisplay from "./SmurfDisplay"
+
+
+
+
+
+function App() {
+
+  const [smurfs, setSmurfs] = useState([]);
+  
+
+  const getSmurf = () => {
+    Axios
+    .get(`http://localhost:3333/smurfs`)
+    .then((res)=>{
+      console.log("Hey! Here's some smurfs", res.data);
+      setSmurfs(res.data);
+      
+    })
+    .catch((err)=>{
+      console.log("well shit :", err)
+    })
+    
+  }
+
+  
+  
+
+  
+
+  
     return (
       <div className="App">
-        <h1>SMURFS! W/Redux</h1>
-        <div>Welcome to your state management version of Smurfs!</div>
-        <div>Start inside of your `src/index.js` file!</div>
-        <div>Have fun!</div>
-        <SmurfForm/>
+        <smurfContext.Provider store = {{smurfs}}>
+          <h1>SMURFS! W/Redux</h1>
+          <div>Welcome to your state management version of Smurfs!</div>
+          <div>Start inside of your `src/index.js` file!</div>
+          <div>Have fun!</div>
+          <SmurfForm2 /> 
+          <SmurfDisplay />
+        </smurfContext.Provider>
       </div>
     );
-  }
-}
+  
+};
 
 export default App;

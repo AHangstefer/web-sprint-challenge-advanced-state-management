@@ -1,14 +1,29 @@
-import React from "react";
-import {useSelector} from "react-react";
+import React, {useContext} from "react";
+import {useSelector} from "react-redux";
+import smurfContext from "./context/smurfContext"
 
 
 const SmurfDisplay = () => {
-    const {name} = useSelector(state => state)
+    const smurfs = useContext(smurfContext);
 
-    return(
-    <div className = "smurf">
-        {name.map(smurf =>
-            <h1>{smurf}</h1>)}
-    </div>
-    );
+    return (
+        <section className="smurfs">
+              {smurfs.map((s) => (
+                <div className="smurf" key={s.name}>
+                 <strong>{s.name}</strong>
+               </div>
+              ))}
+        </section>
+    )
 };
+
+export default SmurfDisplay;
+
+
+//     <section className="smurfs">
+//       {.map((s) => (
+//         <div className="smurf" key={s.name}>
+// //           <strong>{s.name}</strong>
+// //         </div>
+//       ))}
+//     </section>

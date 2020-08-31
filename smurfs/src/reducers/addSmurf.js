@@ -1,8 +1,13 @@
-import {NEW_SMURF_FAIL, NEW_SMURF_SUCCESS, NEW_SMURF_START} from "../actions/addSmurfActions"
+import {NEW_SMURF_FAIL,
+     NEW_SMURF_SUCCESS, 
+     NEW_SMURF_START, 
+    //  UPDATE_AGE, 
+    //  UPDATE_HEIGHT,
+    //  UPDATE_NAME
+    } from "../actions/addSmurfActions"
 
 
 export const initialState = {
-    
         name: '',
         age: '',
         height: '',
