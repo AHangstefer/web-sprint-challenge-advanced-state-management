@@ -12,7 +12,8 @@ import SmurfDisplay from "./SmurfDisplay"
 
 function App() {
 
-  const [smurfs, setSmurfs] = useState([]);
+  
+  let [smurfs, setSmurfs] = useState([]);
   
 
   const getSmurf = () => {
@@ -20,7 +21,8 @@ function App() {
     .get(`http://localhost:3333/smurfs`)
     .then((res)=>{
       console.log("Hey! Here's some smurfs", res.data);
-      setSmurfs(res.data);
+      //smurfs.push(res.data);
+       setSmurfs(res.data);
       
     })
     .catch((err)=>{
@@ -28,6 +30,11 @@ function App() {
     })
     
   }
+
+    
+  
+
+  
 
   
   
@@ -37,13 +44,14 @@ function App() {
   
     return (
       <div className="App">
-        <smurfContext.Provider store = {{smurfs}}>
+        <smurfContext.Provider value = {{ smurfs , getSmurf}}>
           <h1>SMURFS! W/Redux</h1>
           <div>Welcome to your state management version of Smurfs!</div>
           <div>Start inside of your `src/index.js` file!</div>
           <div>Have fun!</div>
           <SmurfForm2 /> 
           <SmurfDisplay />
+          <button onClick = {getSmurf}>All the Smurfs!</button>
         </smurfContext.Provider>
       </div>
     );

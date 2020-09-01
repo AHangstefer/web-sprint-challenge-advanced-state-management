@@ -15,7 +15,7 @@ export const initialState = {
         //id: 
 };
 
-const addSmurf = (state = initialState, action) => {
+export const addSmurf = (state = initialState, action) => {
     switch(action.type){
         case NEW_SMURF_START:
             return{
@@ -41,4 +41,3 @@ const addSmurf = (state = initialState, action) => {
     };
 };
 
-export default addSmurf;

@@ -6,8 +6,8 @@ import {Provider} from "react-redux";
 import {createStore, applyMiddleware} from "redux";
 import logger from "redux-logger";
 import thunk from "redux-thunk";
-import addSmurf from "./reducers/addSmurf";
-
+import {addSmurf} from "./reducers/addSmurf";
+//import {getSmurf} from "./reducers/smurfReducer2"
 
 const store = createStore(addSmurf, applyMiddleware(thunk, logger));
 
